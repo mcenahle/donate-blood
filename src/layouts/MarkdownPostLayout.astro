@@ -37,11 +37,18 @@ const { frontmatter } = Astro.props;
           > 返回</a
         >
         <button
-          class="btn btn-default"
+          class="btn btn-danger"
           data-toggle="modal"
           data-target="#showCertModal"
           style="margin-left: 12px;"
           ><Icon name="mdi:certificate" /> 查看献血证</button
+        >
+        <button
+          class="btn btn-default"
+          data-toggle="modal"
+          data-target="#bloodDonateModal"
+          style="margin-left: 12px;"
+          ><Icon name="mdi:information-outline" /> 详情</button
         >
       </div>
     </div>
@@ -73,6 +80,62 @@ const { frontmatter } = Astro.props;
               alt={`${frontmatter.title} 献血证`}
               class="img-responsive center-block"
             />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal"
+              >关闭</button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="bloodDonateModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="bloodDonateModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-hidden="true">&times;</button
+            >
+            <h4 class="modal-title" id="bloodDonateModalLabel">
+              {frontmatter.title} 献血信息
+            </h4>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <th>献血种类</th>
+                  <td>全血</td>
+                </tr>
+                <tr>
+                  <th>献血量</th>
+                  <td>{frontmatter.volume}</td>
+                </tr>
+                <tr>
+                  <th>献血地点</th>
+                  <td>{frontmatter.place}</td>
+                </tr>
+                <tr>
+                  <th>献血日期</th>
+                  <td>{frontmatter.pubDate}</td>
+                </tr>
+                <tr>
+                  <th>发证单位</th>
+                  <td>上海市卫生健康委员会</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal"
