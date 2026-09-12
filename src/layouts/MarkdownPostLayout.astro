@@ -1,0 +1,86 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+const { frontmatter } = Astro.props;
+---
+
+<meta charset="utf-8" />
+<Layout>
+  <div class="container">
+    <ul class="breadcrumb" style="margin-top: 16px;">
+      <li><a href="/">献血记录网站</a></li>
+      <li class="active">{frontmatter.title}</li>
+    </ul>
+    <div class="panel panel-default">
+      <div class="page-heading" style="padding:15px">
+        <h2>{frontmatter.title}</h2>
+        <h4>
+          <Icon name="mdi:account-edit" /> 作者：{frontmatter.author}
+          <span style="margin-left: 16px;"
+            ><Icon name="mdi:calendar" /> 日期：{frontmatter.pubDate}</span
+          >
+        </h4>
+      </div>
+      <div class="panel-body">
+        <div class="article">
+          <slot />
+        </div>
+        <hr style="margin-top: 24px;" />
+        <a class="btn btn-primary" href="/" role="button"
+          ><svg width="1em" height="1em" data-icon="mdi:arrow-left"
+            ><symbol id="ai:mdi:arrow-left" viewBox="0 0 24 24"
+              ><path
+                fill="currentColor"
+                d="M20 11v2H8l5.5 5.5l-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5L8 11z"
+              ></path></symbol
+            ><use href="#ai:mdi:arrow-left"></use></svg
+          > 返回</a
+        >
+        <button
+          class="btn btn-gold"
+          data-toggle="modal"
+          data-target="#showCertModal"
+          style="margin-left: 12px;"
+          ><Icon name="mdi:certificate" /> 查看献血证</button
+        >
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="showCertModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="showCertModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-hidden="true">&times;</button
+            >
+            <h4 class="modal-title" id="showCertModalLabel">
+              {frontmatter.title} 献血证
+            </h4>
+          </div>
+          <div class="modal-body">
+            <img
+              src={frontmatter.certPicture}
+              alt={`${frontmatter.title} 献血证`}
+              class="img-responsive center-block"
+            />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal"
+              >关闭</button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

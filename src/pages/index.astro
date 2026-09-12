@@ -1,8 +1,31 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
+import { Icon } from "astro-icon/components";
+const allDonations = Object.values(
+  import.meta.glob("./db/*.md", { eager: true }),
+).sort(
+  (a: any, b: any) =>
+    new Date(b.frontmatter.pubDate).getTime() -
+    new Date(a.frontmatter.pubDate).getTime(),
+);
 ---
 
 <Layout>
   <Hero />
+  <div class="container article" style="margin-top: 20px">
+    <p>以下是我的献血记录：</p>
+    <ul style="text-indent: 0em;">
+      {
+        allDonations.map((post: any) => (
+          <li>
+            <a href={post.url} title={post.frontmatter.title}>
+              <u>{post.frontmatter.title}</u>{" "}
+              <Icon name="mdi:arrow-top-right" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </Layout>
