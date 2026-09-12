@@ -12,10 +12,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@universityofmaryland/web-components-library": "1.17.14",
-    "@universityofmaryland/web-elements-library": "1.6.7",
-    "@universityofmaryland/web-styles-library": "1.8.3",
     "astro": "^7.3.2",
+    "bulma": "^1.0.4",
     "sass": "^1.104.0"
   },
   "allowScripts": {
