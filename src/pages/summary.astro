@@ -1,0 +1,118 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<Layout>
+  <div class="container">
+    <h2>献血记录摘要</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>献血日期</th>
+          <th>献血量</th>
+          <th>献血地点</th>
+          <th>献血种类</th>
+          <th>发证机关</th>
+          <th>详情</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2025-12-19</td>
+          <td>200ml</td>
+          <td>上海电影艺术职业学院</td>
+          <td>全血</td>
+          <td>上海市卫生健康委员会</td>
+          <td
+            ><a data-toggle="modal" data-target="#2025-12-19-bloodDonateModal"
+              >详情</a
+            ></td
+          >
+        </tr>
+      </tbody>
+    </table>
+
+    <p>献血个人目标：</p>
+    <div class="progress">
+      <div
+        class="progress-bar"
+        role="progressbar"
+        aria-valuenow="20"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        style="width:20%"
+      >
+        计划1000ml，目前200ml
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<div
+  class="modal fade"
+  id="2025-12-19-bloodDonateModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="2025-12-19-bloodDonateModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-hidden="true">&times;</button
+        >
+        <h4 class="modal-title" id="2025-12-19-bloodDonateModalLabel">
+          2025-12-19 献血详细信息
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="table">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th> 献血种类</th>
+                <td>全血</td>
+              </tr>
+              <tr>
+                <th>献血量</th>
+                <td>200ml</td>
+              </tr>
+              <tr>
+                <th>献血地点</th>
+                <td>上海电影艺术职业学院</td>
+              </tr>
+              <tr>
+                <th>献血日期</th>
+                <td>2025-12-19</td>
+              </tr>
+              <tr>
+                <th>发证单位</th>
+                <td>上海市卫生健康委员会</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"
+          >关闭</button
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .table-bordered > thead > tr > td,
+  .table-bordered > thead > tr > th {
+    background: #2b5bae;
+    color: #fff;
+    text-align: center;
+    border: none;
+  }
+</style>
