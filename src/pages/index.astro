@@ -13,17 +13,24 @@ const allDonations = Object.values(
 
 <Layout>
   <Hero />
-  <div class="container article" style="margin-top: 20px">
+  <div class="container" style="margin-top: 20px">
     <p>以下是我的献血记录：</p>
-    <ul style="text-indent: 0em;">
+    <ul class="list-group">
       {
         allDonations.map((post: any) => (
-          <li>
-            <a href={post.url} title={post.frontmatter.title}>
-              <u>{post.frontmatter.title}</u>{" "}
+          <a href={post.url} class="list-group-item">
+            <h4 class="list-group-item-heading">
+              {post.frontmatter.title}&nbsp;
               <Icon name="mdi:arrow-top-right" />
-            </a>
-          </li>
+            </h4>
+            <p class="list-group-item-text">
+              <Icon name="mdi:calendar" />
+              &nbsp;{post.frontmatter.pubDate}
+            </p>
+            <small class="list-group-item-text">
+              {post.frontmatter.description}
+            </small>
+          </a>
         ))
       }
     </ul>
