@@ -1,0 +1,31 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="alert alert-danger">
+  <Icon name="mdi:medication" /> 本网站隶属于 <a
+    href="https://mcenahle.care/ecosystem/"
+    target="_blank"
+    class="tooltip-test"
+    data-toggle="tooltip"
+    title="目前，该页面暂未建成。"
+    ><u><code>mcenahle.care</code> 生态系统</u>&nbsp;
+    <Icon name="mdi:open-in-new" /></a
+  >。
+</div>
+
+<style is:global>
+  .alert {
+    padding: 6px;
+    margin-top: 0px;
+    margin-bottom: 6px;
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+</style>
+
+<script>
+  $(function () {
+    $("[data-toggle='tooltip']").tooltip();
+  });
+</script>
